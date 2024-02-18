@@ -44,25 +44,101 @@ function displayClear(){
     arrayNum2.length=0
 }
 
- const calculate = () =>{
-    if(theOperation==='+'){
-        answer = firstNum + secondNum
-        display.value = answer
-        ans.textContent = 'Ans = ' + display.value;
-    } else if(theOperation==='-'){
-        answer = firstNum - secondNum
-        display.value = answer
-        ans.textContent = 'Ans = ' + display.value;
-    } else if(theOperation === '×'){
-        answer = firstNum * secondNum
-        display.value = answer
-        ans.textContent = 'Ans = ' + display.value;
-    } else if(theOperation ==='÷' && secondNum !== 0){
+//  const calculate = () =>{
+//     if(theOperation==='+'){
+//         answer = firstNum + secondNum
+//         display.value = answer
+//         ans.textContent = 'Ans = ' + display.value;
+//     } else if(theOperation==='-'){
+//         answer = firstNum - secondNum
+//         display.value = answer
+//         ans.textContent = 'Ans = ' + display.value;
+//     } else if(theOperation === '×'){
+//         answer = firstNum * secondNum
+//         display.value = answer
+//         ans.textContent = 'Ans = ' + display.value;
+//     } else if(theOperation ==='÷' && secondNum !== 0){
 
-         answer = firstNum / secondNum
-         display.value = answer
-         ans.textContent = 'Ans = ' + display.value;
-        } 
-        
+//          answer = firstNum / secondNum
+//          display.value = answer
+//          ans.textContent = 'Ans = ' + display.value;
+//         } 
+function calculate() {
+    switch (theOperation) {
+        case '+':
+            answer = firstNum + secondNum;
+            break;
+        case '-':
+            answer = firstNum - secondNum;
+            break;
+        case '×':
+            answer = firstNum * secondNum;
+            break;
+        case '÷':
+            if (secondNum !== 0) {
+                answer = firstNum / secondNum;
+            } else {
+                answer = 'Error: Division by zero';
+            }
+            break;
+        default:
+            answer = 'Error: Invalid operation';
+            break;
     }
+    if (theOperation === '%') {
+        if (secondNum !== 0) {
+            answer = firstNum % secondNum;
+        } else {
+            answer = 'Error: Division by zero';
+        }
+    }
+
+    if (theOperation === '.') {
+        answer = parseFloat(firstNum + '.' + secondNum);
+    }
+
+    if (theOperation === '(' || theOperation === ')') {
+        answer = 'Error: Parenthesis operation not supported';
+    }
+
+    display.value = answer;
+    ans.textContent = 'Ans = ' + display.value;
+
+    display.value = answer;
+    ans.textContent = 'Ans = ' + display.value;
+}
+        
+        function displayPercent() {
+            if (theOperation === '') {
+                display.value = (parseFloat(firstNum) / 100).toString();
+                firstNum = display.value;
+            } else {
+                const num2 = parseFloat(secondNum) / 100;
+                display.value += num2;
+                secondNum = display.value;
+            }
+        }
+        
+        function displayDecimal() {
+            if (!isDecimal) {
+                if (theOperation === '') {
+                    firstNum += '.';
+                    display.value += '.';
+                    isDecimal = true;
+                } else {
+                    secondNum += '.';
+                    display.value += '.';
+                    isDecimal = true;
+                }
+            }
+        }
+        
+        function displayParenthesis(parenthesis) {
+            if (parenthesis === '(') {
+                display.value += '(';
+            } else {
+                display.value += ')';
+            }
+        }
+    
     

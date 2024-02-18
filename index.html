@@ -8,11 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="icon" id="icon" onclick="history()"><i class="historyicon" id="icon">history</i></div>
-        <div class="historyouter" id="history" style="display: none;">
-            <div class="historyinner" id="historyinner"> 
-            </div>
-        </div>
+       
+        
         <div class="outputbox">
             <div class="resultbox">
                 <span id="answer">
@@ -27,17 +24,17 @@
             <tr>
                 <td>
                     <div class="btn">
-                        <div class="char operator" onclick="displayNum(this.textContent)">(</div>
+                        <div class="char operator" onclick="displayParenthesis(this.textContent)">(</div>
                     </div>
                 </td>
                 <td>
                     <div class="btn">
-                        <div class="char operator" onclick="displayNum(this.textContent)">)</div>
+                        <div class="char operator" onclick="displayParenthesis(this.textContent)">)</div>
                     </div>
                 </td>
                 <td>
                     <div class="btn">
-                        <div class="char operator" onclick="displayNum(this.textContent)">%</div>
+                        <div class="char operator" onclick="(this.textContent)">%</div>
                     </div>
                 </td>
                 <td>
@@ -120,7 +117,7 @@
                 </td>
                 <td>
                     <div class="btn">
-                        <div class="char operator" onclick="displayNum(this.textContent)">.</div>
+                        <div class="char operator" onclick="displayDecimal(this.textContent)">.</div>
                     </div>
                 </td>
                 <td>
